@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# leaderboard-react-ts
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**English** | [简体中文](README.zh-CN.md)
 
-## Available Scripts
+[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-In the project directory, you can run:
+- [leaderboard-react-ts](#leaderboard-react-ts)
+  - [Architecture](#architecture)
+  - [Strategies](#strategies)
+  - [Maintainers](#maintainers)
+  - [License](#license)
 
-### `npm start`
+Welcome.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This is a demo that uses React and styled-components to implement real-time leaderboard for streamers based on randomly generated scores.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+[Demo](https://fantiga.github.io/leaderboard-react-ts/dist/)
 
-### `npm test`
+## Architecture
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ - The main Javascript framework is [React 18.2](https://reactjs.org/) version.
+ - Use [styled-components 5.3.6](https://styled-components.com/) for style management.
+ - Use [Webpack 5.75.0](https://webpack.js.org/) for code and resource packaging.
+ - It follows the type checking and syntax specifications of [Typescript](https://www.typescriptlang.org/) and [ESLint](https://eslint.org/).
 
-### `npm run build`
+## Strategies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ 1. All projects are in the `/` directory.
+ 2. `/src/index.tsx` is an entry file.
+ 3. `/src/pages/Index.tsx` is a single page.
+ 4. The `/src/utils/` directory puts the public section. `common.ts` contains some calculation methods used and methods for asynchronously obtaining data, and `interface.ts` defines the types used by all components.
+ 5. The `/src/components/` directory is the three components `List`, `Streamer` and `Score` in the page. Each component file is separated into `UI` and `Container` two parts.
+ 6. The `List` component is used to generate a list of streamers.
+ 7. The `Streamer` component is used to generate elements for each row.
+ 8. The `Score` component is used to animate score changes.
+ 9. Send a request to the API through the specified URL `https://webcdn.17app.co/campaign/pretest/data.json`. Render the page with the returned data as requested.
+ 10. It is set to calculate a random score for a random element every `3` seconds, and reorder at the same time.
+ 11. Cumulative time spent: about `33` hours.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Maintainers
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[@FantiGA](https://github.com/FantiGA)
 
-### `npm run eject`
+## License
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[MIT](LICENSE)  © 2023 [@FantiGA](https://github.com/FantiGA)
