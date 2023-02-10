@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2023-02-04 23:03:29
- * @LastEditTime: 2023-02-08 22:33:03
+ * @LastEditTime: 2023-02-09 22:03:42
  * @LastEditors: fantiga
  * @FilePath: /clinical-portal-demo-react-ts/src/App.tsx
  */
@@ -26,7 +26,7 @@ const App: FC = () => {
   initFetchMock(fetchMock);
 
   return (
-    <Container maxWidth="sm" >
+    <Container maxWidth="sm">
       {
         sessionToken === ""
           ?
@@ -34,9 +34,8 @@ const App: FC = () => {
           :
           <Dashboard sessionToken={sessionToken} setSessionToken={setSessionToken} />
       }
-    </Container >
+    </Container>
   );
 };
 
 export default App;
-1;
