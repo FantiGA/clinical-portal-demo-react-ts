@@ -1,12 +1,12 @@
 /*
  * @Author: fantiga
  * @Date: 2023-02-04 23:03:29
- * @LastEditTime: 2023-02-09 22:03:42
+ * @LastEditTime: 2023-02-11 13:31:17
  * @LastEditors: fantiga
  * @FilePath: /clinical-portal-demo-react-ts/src/App.tsx
  */
 
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Container from "@mui/material/Container";
 import fetchMock from "fetch-mock";
 import initFetchMock from "./api/initFetchMock";
@@ -26,9 +26,9 @@ const App: FC = () => {
   initFetchMock(fetchMock);
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="xl">
       {
-        sessionToken === ""
+        !sessionToken
           ?
           <Login sessionToken={sessionToken} setSessionToken={setSessionToken} />
           :

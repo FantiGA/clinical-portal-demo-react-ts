@@ -15,8 +15,6 @@ export default function initFetchMock(fetchMockInstance) {
   }
 
   function generateRandomDelay() {
-    // const ran = Math.floor(Math.random() * 2000) + 500;
-    // console.log(ran)
     return Math.floor(Math.random() * 2000) + 500;
   }
 

@@ -1,12 +1,12 @@
 /*
  * @Author: fantiga
  * @Date: 2023-02-08 22:23:13
- * @LastEditTime: 2023-02-10 23:15:17
+ * @LastEditTime: 2023-02-11 21:31:40
  * @LastEditors: fantiga
  * @FilePath: /clinical-portal-demo-react-ts/src/components/Login/index.tsx
  */
 
-import { FC, useEffect } from "react";
+import { FC, useCallback, useEffect } from "react";
 import { ISession, TLoginForm } from "@utils/interface";
 import { Button, FormControl, FormHelperText, Grid, TextField } from "@mui/material";
 import styled from "styled-components";
@@ -26,18 +26,16 @@ const FormUI = styled.form`
 
 const Login: FC<ISession> = ({ sessionToken, setSessionToken }) => {
   const loginDefaultValue: TLoginForm = {
-    userName: "",
-    passWord: "",
+    userName: "joshs",
+    passWord: "joshs_pw",
   };
 
-  const loginHandler = async (Authorization: string) => {
+  const loginHandler = useCallback(async (Authorization: string) => {
     return await fetch("/login", {
       method: "POST",
       headers: { Authorization }
-    }).then(res => {
-      return res.json();
-    });
-  };
+    }).then(res => res.json());
+  }, []);
 
   const form = useForm<TLoginForm>({ defaultValues: { ...loginDefaultValue } });
   const { register, handleSubmit, setError, formState: { errors } } = form;
@@ -74,41 +72,46 @@ const Login: FC<ISession> = ({ sessionToken, setSessionToken }) => {
   };
 
   return (
-    <>
-      <Grid container alignItems="center" sx={{ height: "100vh" }}>
-        <Grid item container justifyContent="center" sx={{ mb: "20vh" }}>
-          <Grid item>
-            <H1UI>
-              Clinical Portal
-            </H1UI>
-            <H1UI>
-              Sign In
-            </H1UI>
-          </Grid>
-          <Grid item container>
-            <FormProvider {...form}>
-              <FormUI onSubmit={handleSubmit(onSubmit)}>
-                <Grid item sx={{ mt: "2em", mb: "2em" }}>
-                  <FormControl error variant="standard" sx={{ width: "60%" }} >
-                    <TextField {...register("userName", { required: "Username is required." })} label="Username" />
-                    {errors.userName && <FormHelperText>{errors.userName.message}</FormHelperText>}
-                  </FormControl>
-                </Grid>
-                <Grid item sx={{ mt: "2em", mb: "2em" }}>
-                  <FormControl error variant="standard" sx={{ width: "60%" }} >
-                    <TextField {...register("passWord", { required: "Password is required." })} label="Password" type="password" />
-                    {errors.passWord && <FormHelperText>{errors.passWord.message}</FormHelperText>}
-                  </FormControl>
-                </Grid>
-                <Grid item sx={{ mt: "2em", mb: "2em" }}>
-                  <Button type="submit" variant="contained">Login</Button>
-                </Grid>
-              </FormUI>
-            </FormProvider>
-          </Grid>
+    <Grid container justifyContent="center" alignItems="center" sx={{ height: "100vh" }}>
+      <Grid item container justifyContent="center" sx={{ mt: "10vh", mb: "20vh", width: "40vw", minWidth: "400px" }}>
+        <Grid item>
+          <H1UI>
+            Clinical Portal
+          </H1UI>
+          <H1UI>
+            Sign In
+          </H1UI>
+        </Grid>
+        <Grid item container>
+          <FormProvider {...form}>
+            <FormUI onSubmit={handleSubmit(onSubmit)}>
+              <Grid item sx={{ mt: "2em", mb: "2em" }}>
+                <FormControl error variant="standard" sx={{ width: "60%" }} >
+                  <TextField
+                    {...register("userName", { required: "Username is required." })}
+                    label="Username"
+                  />
+                  {errors.userName && <FormHelperText>{errors.userName.message}</FormHelperText>}
+                </FormControl>
+              </Grid>
+              <Grid item sx={{ mt: "2em", mb: "2em" }}>
+                <FormControl error variant="standard" sx={{ width: "60%" }} >
+                  <TextField
+                    {...register("passWord", { required: "Password is required." })}
+                    label="Password"
+                    type="password"
+                  />
+                  {errors.passWord && <FormHelperText>{errors.passWord.message}</FormHelperText>}
+                </FormControl>
+              </Grid>
+              <Grid item sx={{ mt: "2em", mb: "2em" }}>
+                <Button type="submit" variant="contained" size="large" sx={{width: "60%"}}>Login</Button>
+              </Grid>
+            </FormUI>
+          </FormProvider>
         </Grid>
       </Grid>
-    </>
+    </Grid>
   );
 };
 
