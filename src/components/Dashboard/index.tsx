@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2023-02-08 22:24:05
- * @LastEditTime: 2023-02-12 09:52:37
+ * @LastEditTime: 2023-02-12 12:48:32
  * @LastEditors: fantiga
  * @FilePath: /clinical-portal-demo-react-ts/src/components/Dashboard/index.tsx
  */
@@ -20,7 +20,7 @@ const H1UI = styled.h1`
   line-height: 1.5em;
 `;
 
-const Dashboard: FC<ISession> = ({ sessionToken, setSessionToken }) => {
+const Dashboard: FC<ISession> = ({ sessionToken }) => {
   const [clinicianDetails, setClinicianDetails] = useState<TClinician>();
   const [patients, setPatients] = useState<TPatientList>({ patients: [] });
   const [patient, setPatient] = useState<string>("");
@@ -30,18 +30,20 @@ const Dashboard: FC<ISession> = ({ sessionToken, setSessionToken }) => {
     fetch("/clinician-details", {
       method: "GET",
       headers: { Authorization: sessionToken }
-    }).then(async res => {
-      setClinicianDetails(await res.json());
-    });
+    })
+      .then(async res => {
+        setClinicianDetails(await res.json());
+      });
   }, []);
 
   useEffect(() => {
     fetch("/patients", {
       method: "GET",
       headers: { Authorization: sessionToken }
-    }).then(async res => {
-      setPatients(await res.json());
-    });
+    })
+      .then(async res => {
+        setPatients(await res.json());
+      });
   }, []);
 
   const handleChange = (event: SyntheticEvent, newValue: number) => {

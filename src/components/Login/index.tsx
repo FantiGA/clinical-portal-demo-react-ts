@@ -1,12 +1,12 @@
 /*
  * @Author: fantiga
  * @Date: 2023-02-08 22:23:13
- * @LastEditTime: 2023-02-12 09:51:57
+ * @LastEditTime: 2023-02-12 13:17:00
  * @LastEditors: fantiga
  * @FilePath: /clinical-portal-demo-react-ts/src/components/Login/index.tsx
  */
 
-import { FC, useCallback, useEffect } from "react";
+import { FC, useCallback } from "react";
 import { ISession, TLoginForm } from "@utils/interface";
 import { Button, FormControl, FormHelperText, Grid, TextField } from "@mui/material";
 import styled from "styled-components";
@@ -24,17 +24,18 @@ const FormUI = styled.form`
   width: 100%;
 `;
 
-const Login: FC<ISession> = ({ sessionToken, setSessionToken }) => {
+const Login: FC<ISession> = ({ setSessionToken }) => {
   const loginDefaultValue: TLoginForm = {
-    userName: "joshs",
-    passWord: "joshs_pw",
+    userName: "",
+    passWord: "",
   };
 
   const loginHandler = useCallback(async (Authorization: string) => {
     return await fetch("/login", {
       method: "POST",
       headers: { Authorization }
-    }).then(res => res.json());
+    })
+      .then(res => res.json());
   }, []);
 
   const form = useForm<TLoginForm>({ defaultValues: { ...loginDefaultValue } });
@@ -65,7 +66,7 @@ const Login: FC<ISession> = ({ sessionToken, setSessionToken }) => {
         Authorization = "Basic YW15YjphbXliX3B3";
         break;
       default:
-        return false;
+        return;
     }
 
     loginHandler(Authorization).then(res => setSessionToken(res.sessionToken));
