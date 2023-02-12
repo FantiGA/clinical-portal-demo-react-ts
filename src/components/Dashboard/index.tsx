@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2023-02-08 22:24:05
- * @LastEditTime: 2023-02-11 23:03:00
+ * @LastEditTime: 2023-02-12 09:52:37
  * @LastEditors: fantiga
  * @FilePath: /clinical-portal-demo-react-ts/src/components/Dashboard/index.tsx
  */
@@ -9,7 +9,6 @@
 import { FC, SyntheticEvent, useEffect, useState } from "react";
 import { TPatientList, ISession, TClinician, IPatientList } from "@utils/interface";
 import { Grid, Tab, Tabs } from "@mui/material";
-import { TabPanel, TabContext, TabList, LoadingButton } from "@mui/lab";
 import styled from "styled-components";
 import ClinicianDetails from "./ClinicianDetail";
 import PatientDetail from "./PatientDetail";
@@ -42,8 +41,6 @@ const Dashboard: FC<ISession> = ({ sessionToken, setSessionToken }) => {
       headers: { Authorization: sessionToken }
     }).then(async res => {
       setPatients(await res.json());
-      // }).then(() => {
-      //   setPatient(patients.patients[0].id);
     });
   }, []);
 
@@ -54,7 +51,6 @@ const Dashboard: FC<ISession> = ({ sessionToken, setSessionToken }) => {
   };
 
   useEffect(() => {
-    // patients && patients.patients && patients.patients[0].id && console.log(patients.patients[0].id)
     if (!tabId && patients && patients.patients && patients.patients[0]) {
       console.log("useEffect", patients.patients[0]);
       setPatient(patients.patients[0].id);

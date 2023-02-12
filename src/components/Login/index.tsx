@@ -1,7 +1,7 @@
 /*
  * @Author: fantiga
  * @Date: 2023-02-08 22:23:13
- * @LastEditTime: 2023-02-11 21:31:40
+ * @LastEditTime: 2023-02-12 09:51:57
  * @LastEditors: fantiga
  * @FilePath: /clinical-portal-demo-react-ts/src/components/Login/index.tsx
  */
@@ -105,7 +105,7 @@ const Login: FC<ISession> = ({ sessionToken, setSessionToken }) => {
                 </FormControl>
               </Grid>
               <Grid item sx={{ mt: "2em", mb: "2em" }}>
-                <Button type="submit" variant="contained" size="large" sx={{width: "60%"}}>Login</Button>
+                <Button type="submit" variant="contained" size="large" sx={{ width: "60%" }}>Login</Button>
               </Grid>
             </FormUI>
           </FormProvider>

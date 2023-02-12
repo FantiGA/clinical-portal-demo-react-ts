@@ -1,12 +1,12 @@
 /*
  * @Author: fantiga
  * @Date: 2023-02-04 23:03:29
- * @LastEditTime: 2023-02-11 13:31:17
+ * @LastEditTime: 2023-02-12 09:53:55
  * @LastEditors: fantiga
  * @FilePath: /clinical-portal-demo-react-ts/src/App.tsx
  */
 
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import Container from "@mui/material/Container";
 import fetchMock from "fetch-mock";
 import initFetchMock from "./api/initFetchMock";
