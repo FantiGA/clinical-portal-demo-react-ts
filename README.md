@@ -5,6 +5,7 @@
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 - [clinical-portal-demo-react-ts](#clinical-portal-demo-react-ts)
+  - [Usage](#usage)
   - [Architecture](#architecture)
   - [Strategies](#strategies)
   - [Maintainers](#maintainers)
@@ -13,6 +14,18 @@
 Welcome.
 
 This is a demo that uses `React`, `Material UI`, `styled-components`, `react-hook-form` and `fetch-mock`, according to the provided API, to implement a clinician to log in and view patient details project.
+
+## Usage
+
+To run this project, install it locally using `npm`:
+
+```bash
+cd ./clinical-portal-demo-react-ts
+npm i
+npm run start
+```
+
+Then you can visit `http://localhost:8080/`.
 
 [Demo](https://fantiga.github.io/clinical-portal-demo-react-ts/dist/)
 

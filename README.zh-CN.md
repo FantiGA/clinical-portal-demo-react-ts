@@ -5,6 +5,7 @@
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 - [clinical-portal-demo-react-ts](#clinical-portal-demo-react-ts)
+  - [用法](#用法)
   - [架构](#架构)
   - [策略](#策略)
   - [维护者](#维护者)
@@ -13,6 +14,18 @@
 欢迎。
 
 这是一个使用 `React`、`Material UI`、`styled-components`、`react-hook-form` 和 `fetch-mock`，根据提供的 API，实现给临床医生登录并查看病人详细资料的演示项目。
+
+## 用法
+
+要运行此项目，请使用 `npm` 在本地安装它：
+
+```bash
+cd ./clinical-portal-demo-react-ts
+npm i
+npm run start
+```
+
+然后就可以访问 `http://localhost:8080/` 了。
 
 [演示](https://fantiga.github.io/clinical-portal-demo-react-ts/dist/)
 
